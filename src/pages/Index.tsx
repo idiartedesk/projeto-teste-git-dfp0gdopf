@@ -86,7 +86,7 @@ export default function Index() {
               <span>Ambiente Interativo de Aprendizado</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#EDEFF6]">
-              TesteGit — seu laboratório de Git
+              TesteGit idiarte— seu laboratório de Git
             </h1>
             <p className="text-sm text-[#8A91A8] max-w-2xl">
               Simule commits, branches e comandos sem medo de quebrar nada. Cada ação reflete
