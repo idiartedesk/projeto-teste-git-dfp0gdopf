@@ -114,7 +114,7 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Backend PocketBase Test */}
+      {/* Backend Skip Cloud Test */}
       <BackendTestButton />
 
       {/* 2. Stats Row */}

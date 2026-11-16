@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Loader2, ServerCog, CheckCircle2, XCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-const POCKETBASE_URL = import.meta.env.VITE_POCKETBASE_URL || 'http://127.0.0.1:8090'
+// Backend do próprio Skip Cloud: rotas em /backend/v1/...
+const ROUTE = '/backend/v1/teste'
 
 type Result = { kind: 'ok'; raw: string } | { kind: 'error'; message: string } | null
 
@@ -15,7 +16,7 @@ export default function BackendTestButton() {
     setResult(null)
 
     try {
-      const res = await fetch(`${POCKETBASE_URL}/teste`)
+      const res = await fetch(ROUTE)
 
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`)
@@ -35,7 +36,7 @@ export default function BackendTestButton() {
           : ''
       setResult({
         kind: 'error',
-        message: `Não foi possível conectar ao PocketBase em ${POCKETBASE_URL} — verifique se o servidor está rodando.${detail}`,
+        message: `Não foi possível conectar ao backend do Skip (${ROUTE}) — verifique se o backend está ativo e publicado.${detail}`,
       })
     } finally {
       setLoading(false)
@@ -50,17 +51,17 @@ export default function BackendTestButton() {
         className="bg-[#F05133] hover:bg-[#FF6A4D] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 h-10 px-4 shadow-md shadow-[#F05133]/25 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ServerCog className="w-4 h-4" />}
-        <span>{loading ? 'Testando…' : 'Testar backend (/teste)'}</span>
+        <span>{loading ? 'Testando…' : 'Testar backend (/backend/v1/teste)'}</span>
       </Button>
 
       {result?.kind === 'ok' && (
         <div className="space-y-1.5">
           <div className="flex items-center gap-1.5 text-xs text-[#3DD68C] font-mono">
             <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Resposta recebida de GET /teste</span>
+            <span>{`Resposta recebida de GET ${ROUTE}`}</span>
           </div>
           <div className="font-mono text-xs text-[#EDEFF6] bg-[#050507] p-3 rounded-lg border border-[#232838] whitespace-pre-wrap leading-relaxed overflow-x-auto">
-            <span className="text-[#8A91A8]">$ GET /teste → </span>
+            <span className="text-[#8A91A8]">{`$ GET ${ROUTE} → `}</span>
             <span className="text-[#3DD68C]">{result.raw}</span>
           </div>
         </div>
