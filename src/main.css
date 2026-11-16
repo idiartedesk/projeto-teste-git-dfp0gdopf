@@ -1,0 +1,148 @@
+/* Global styles - Theme, font, utilities, animations and global components */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* TesteGit Dark "IDE / Terminal" theme */
+    --background: 226 29% 5%; /* #0A0C12 */
+    --foreground: 228 32% 95%; /* #EDEFF6 */
+
+    --card: 225 24% 9.5%; /* #12151E */
+    --card-foreground: 228 32% 95%; /* #EDEFF6 */
+
+    --popover: 225 24% 9.5%; /* #12151E */
+    --popover-foreground: 228 32% 95%;
+
+    --primary: 9 87% 57%; /* #F05133 - git orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 22% 13.5%; /* #1A1E2A */
+    --secondary-foreground: 228 32% 95%;
+
+    --muted: 224 22% 13.5%; /* #1A1E2A */
+    --muted-foreground: 226 15% 60%; /* #8A91A8 */
+
+    --accent: 224 22% 13.5%;
+    --accent-foreground: 228 32% 95%;
+
+    --destructive: 359 100% 65%; /* #FF4D4F */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 23% 18%; /* #232838 */
+    --input: 225 23% 18%; /* #232838 */
+    --ring: 9 87% 57%; /* #F05133 */
+
+    --radius: 0.625rem; /* 10px */
+
+    --sidebar-background: 225 24% 9.5%;
+    --sidebar-foreground: 228 32% 95%;
+    --sidebar-primary: 9 87% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 22% 13.5%;
+    --sidebar-accent-foreground: 228 32% 95%;
+    --sidebar-border: 225 23% 18%;
+    --sidebar-ring: 9 87% 57%;
+  }
+
+  * {
+    @apply border-border;
+    font-family:
+      'JetBrains Mono', monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  body {
+    background-color: #0a0c12;
+    color: #edeff6;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar for IDE dark feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0c12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232838;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #343c52;
+  }
+
+  /* NEVER REMOVE THIS */
+  section[aria-label='Notifications alt+T'] {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(240, 81, 51, 0.7);
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.9;
+      box-shadow: 0 0 0 6px rgba(240, 81, 51, 0);
+    }
+  }
+
+  @keyframes blink-cursor {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes draw-line {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-blink-cursor {
+    animation: blink-cursor 1s steps(1) infinite;
+  }
+
+  .animate-draw-line {
+    stroke-dasharray: 1000;
+    animation: draw-line 0.8s ease-out forwards;
+  }
+
+  .animate-fade-slide-up {
+    animation: fade-slide-up 0.3s ease-out forwards;
+  }
+}
