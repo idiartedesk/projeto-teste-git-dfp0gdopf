@@ -15,6 +15,7 @@ import {
 import { useGitRepo } from '../context/GitRepoContext'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import BackendTestButton from '@/components/BackendTestButton'
 
 export default function Index() {
   const navigate = useNavigate()
@@ -112,6 +113,9 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      {/* Backend PocketBase Test */}
+      <BackendTestButton />
 
       {/* 2. Stats Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">

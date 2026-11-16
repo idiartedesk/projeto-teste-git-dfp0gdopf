@@ -2,6 +2,15 @@
 
 Este projeto foi criado de ponta a ponta com o [Skip](https://goskip.dev).
 
+## 🧪 Backend PocketBase (hook /teste)
+
+Este projeto usa um hook simples do PocketBase (sem login e sem coleções) que expõe a rota `GET /teste` devolvendo `{"versao":"v1"}`. Para rodar:
+
+1. Baixe o [PocketBase](https://pocketbase.io/docs/) (v0.23+) e descompacte-o em uma pasta.
+2. Copie o conteúdo de `pb_hooks/` deste projeto para a pasta `pb_hooks/` ao lado do executável (crie-a se não existir).
+3. Rode `./pocketbase serve` — reinicie o processo se ele já estiver rodando, pois os hooks só são carregados no início.
+4. No frontend, a URL é lida de `VITE_POCKETBASE_URL` (veja `.env.example`); o padrão é `http://127.0.0.1:8090`. O botão "Testar backend (/teste)" na tela inicial chama a rota e mostra a resposta.
+
 ## 🚀 Stack Tecnológica
 
 - **React 19** - Biblioteca JavaScript para construção de interfaces
